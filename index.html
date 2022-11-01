@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: lightblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #form-container{
+            background-color: white;
+            padding:50px;
+            text-align: center;
+        }
+        .error{
+            color: red;
+            margin: 0px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div id="form-container">
+        <h2>Login</h2>
+        <form action="" onsubmit="return validateForm()">
+            <input type="text" id="username">
+            <p id="userError" class="error"></p>
+            <br>
+
+            <input type="password" id="password">
+            <p id="passError" class="error"></p>
+            <br>
+
+            <input type="submit">
+        </form>
+    </div>
+
+ <script>
+    let username = document.getElementById("username");
+
+    let password = document.getElementById("password");
+
+    const userError = document.getElementById('userError');
+
+    const passError = document.getElementById('passError');
+
+    let flag = 1;
+
+
+    function validateForm(){
+        // return true; // form will submit
+        // return false; // form will not submit
+        if(username.value == ""){
+            console.log("username is empty");
+
+            userError.innerHTML = "User name is empty";
+        } else if(username.value.length < 3){
+            userError.innerHTML = `min. length must be 3`;
+        } else {
+            userError.innerHTML = "";
+        }
+
+        //-----------------------
+
+        if(password.value == ""){
+            passError.innerHTML = `Password is empty`;
+        } else {
+            passError.innerHTML = "";            
+        }
+
+        //-----------------------
+        if(flag){
+            return true;
+        } else {
+            return false;
+        }        
+    }
+
+ </script>
+</body>
+</html>
